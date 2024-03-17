@@ -6,12 +6,12 @@
 #    By: jurodrig <jurodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/03 01:35:34 by jurodrig          #+#    #+#              #
-#    Updated: 2024/03/09 21:16:38 by jurodrig         ###   ########.fr        #
+#    Updated: 2024/03/16 21:44:20 by jurodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 

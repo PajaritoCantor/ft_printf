@@ -6,7 +6,7 @@
 /*   By: jurodrig <jurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:48:11 by jurodrig          #+#    #+#             */
-/*   Updated: 2024/03/09 21:05:35 by jurodrig         ###   ########.fr       */
+/*   Updated: 2024/03/17 04:48:27 by jurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_hex_pointer(unsigned long p)
 	return (result + hex);
 }
 
-int	ft_format_processor(char format, va_list args)
+int	ft_check_format(char format, va_list args)
 {
 	if (format == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -49,7 +49,7 @@ int	ft_format_processor(char format, va_list args)
 	return (-1);
 }
 
-int	ft_check_format(const char *format, va_list args, int *i)
+int	ft_format(const char *format, va_list args, int *i)
 {
 	int	count;
 
@@ -57,7 +57,7 @@ int	ft_check_format(const char *format, va_list args, int *i)
 	if (*(format + *i) == '%' && *(format + *i + 1) != '\0')
 	{
 		(*i)++;
-		count = ft_format_processor(*(format + *i), args);
+		count = ft_check_format(*(format + *i), args);
 		if (count == -1)
 			return (-1);
 	}
@@ -86,7 +86,7 @@ int	ft_printf(const char *format, ...)
 	{
 		while (*(format + i))
 		{
-			result = ft_check_format(format, args, &i);
+			result = ft_format(format, args, &i);
 			if (result == -1)
 			{
 				va_end(args);
@@ -98,3 +98,29 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+/*
+#include <stdio.h>
+
+int main(void)
+{
+    char *str = "Hola, mundo!";
+    int num = 42;
+    unsigned int unum = 42;
+    void *ptr = &num;
+	int len;
+
+    ft_printf("Imprimiendo un solo carácter: %c\n", 'A');
+    ft_printf("Imprimiendo una cadena: %s\n", str);
+    ft_printf("El puntero void * dado como argumento se imprime en formato hexadecimal: %p\n", ptr);
+    ft_printf("Imprimiendo un número decimal (base 10): %d\n", num);
+    ft_printf("Imprimiendo un entero en base 10: %i\n", num);
+    ft_printf("Imprimiendo un número decimal (base 10) sin signo: %u\n", unum);
+    ft_printf("Imprimiendo un número hexadecimal (base 16) en minúsculas: %x\n", num);
+    ft_printf("Imprimiendo un número hexadecimal (base 16) en mayúsculas: %X\n", num);
+    ft_printf("Imprimiendo el símbolo del porcentaje: %%\n");
+
+	ft_printf("hola soy %s, y tengo %d años.\n", "Marvin", 42) ;
+	
+    return 0;
+}
+*/
