@@ -30,3 +30,5 @@ int	ft_putnbr(int n)
 		return (ft_putunbr(n));
 	}
 }
+
+Esta función escribe un número entero en la salida estandar
