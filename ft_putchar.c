@@ -16,3 +16,5 @@ int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
+Esta función escribe un caarácter en laa salida estandar
