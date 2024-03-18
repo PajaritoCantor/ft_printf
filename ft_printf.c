@@ -26,6 +26,13 @@ int	ft_hex_pointer(unsigned long p)
 	return (result + hex);
 }
 
+- Esta función toma un puntero representado como un número entero sin signo como argumento y lo imprime en formato hexadecimal
+- La función ft_putstr se utiliza para imprimir la cadenaa "0x", que es el prefijo estándar para los números hexadecimales
+* Si ft_putstr devuelve -1, significa que hubo un error, por lo que la función ft_hex_pointer también devuelve -1
+- La función ft_putnbr_base se utiliza para convertir el número p a una cadena hexadecimal y la imprime. Si ft_putnbr_base devuelve -1
+	* Significa que hubo un error, por lo que la función ft_hex_pointer también devuelve -1.
+
+
 int	ft_check_format(char format, va_list args)
 {
 	if (format == 'c')
@@ -70,6 +77,13 @@ int	ft_format(const char *format, va_list args, int *i)
 	(*i)++;
 	return (count);
 }
+- Esta función procesa una cadena de formato y una lista de argumentos para formateaar una salida
+	* Un puntero a una cadena de caracteres que contiene el formato de salida deseado. Los especificadores de formato son introducidos por el caráacter %.
+	* Una lista de argumentos que se pasan a la función. Estos argumentos son los valores que se insertarán en la caadena de formato en los luigaares especificadores de formato
+	* Un puntero a un entero que se utiiza para rastreaar la posición actual en la cadena de formato
+- El primer bloque de codigo se ejecuta si el carácter en la posicón i de formato es un % y el siguiente carácter no es el carácter nulo
+- si es así incrementa i y luego llama a la función ft_check_format con el carácter en la nueva posición i de format y args
+- Este bloque de código se ejecuta si el carácter en la posición i de format no es un %. Si es así, llama a la función i de format y asigna el resultado a count.
 
 int	ft_printf(const char *format, ...)
 {
@@ -98,6 +112,12 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+- Esta función es una implementación personalizada de la función printf
+- Toma una cadena de formato y un número variable de argumentos. Formatea los argumentos según la cadena de formato y los imprime en la salida estandar retornando el número total de caaracteres impresos
+	* Si ocurre un error durante el formateo la función retorna -1
+- El bloque recorre la cadena de formato y llama a la función ft_format devuelve -1, se termina la lista de argumentos con va_end y se retornma -1. De lo contrario se suma el resultado de ft_format.
+- Finalmente la lista de argumentos args se limpia con va_end. La función devuelve count que es el número total de caracteres impresos
+
 /*
 #include <stdio.h>
 
