@@ -27,3 +27,9 @@ int	ft_putstr(char *s)
 	}
 	return (count);
 }
+
+- Esta función toma un puntero a una cadena de carácteres char *s como argumento
+- El primer bloque bloque comprueba si el puntero S es nulo. Si es así, la función se llama a así misma con la cadena "null" y devuelve el resultado de esa llamada
+- El segundo bloque es un bucle que recorre cada caráacter de la cadena s. 
+	* Para cada carácter, llama a la función ft_putchar para escribir el carácter. 
+	* Si ft_putchar devuelve -1, entonces ft_putstr también devuelve -1. Después de procesar cada caracter, incrementa count
